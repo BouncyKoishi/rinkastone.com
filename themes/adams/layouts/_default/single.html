@@ -2,7 +2,7 @@
 
 <section class="container">
     <article class="post_article" itemscope itemtype="https://schema.org/Article">
-        {{ .Content }}
+        {{ .Content | replaceRE `src="/images/` (printf `src="%s` (relURL "images/")) }}
     </article>
     {{ with .Params.tags }}
     <ul class="tags">
