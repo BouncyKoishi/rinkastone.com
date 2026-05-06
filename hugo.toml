@@ -1,0 +1,71 @@
+baseURL = 'https://rinkastone.com/'
+locale = 'zh-CN'
+title = '石塔'
+theme = 'adams'
+paginate = 10
+
+[params]
+  subtitle = '逝者如斯夫，不舍昼夜。'
+  description = '逝者如斯夫，不舍昼夜。'
+  placard = ''
+
+[permalinks]
+  posts = '/:year/:month/:day/archives/:contentbasename'
+
+[taxonomies]
+  category = 'categories'
+  tag = 'tags'
+
+[menu]
+  [[menu.main]]
+    name = '首页'
+    url = '/'
+    weight = 1
+  [[menu.main]]
+    name = '公告'
+    url = '/categories/公告/'
+    weight = 2
+  [[menu.main]]
+    name = '技术'
+    url = '/categories/技术/'
+    weight = 3
+  [[menu.main]]
+    name = '游戏'
+    url = '/categories/游戏/'
+    weight = 4
+  [[menu.main]]
+    name = '玄谈'
+    url = '/categories/玄谈/'
+    weight = 5
+  [[menu.main]]
+    name = '自然'
+    url = '/categories/自然/'
+    weight = 6
+  [[menu.main]]
+    name = '语言'
+    url = '/categories/语言/'
+    weight = 7
+  [[menu.main]]
+    name = '友链'
+    url = '/links/'
+    weight = 8
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.parser]
+      [markup.goldmark.parser.attribute]
+        block = true
+  [markup.highlight]
+    style = 'github'
+    lineNos = false
+
+[outputs]
+  home = ['HTML', 'RSS']
+  section = ['HTML', 'RSS']
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = 'application/rss+xml'
+    baseName = 'feed'

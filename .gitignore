@@ -1,0 +1,6 @@
+public/
+resources/
+.hugo_build.lock
+*.pyc
+.DS_Store
+Thumbs.db

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}</title>
+    {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+    {{ with .Keywords }}<meta name="keywords" content="{{ delimit . "," }}">{{ end }}
+    <link href="{{ "css/style.css" | relURL }}?v=1.5.7" type="text/css" rel="stylesheet">
+    <link href="{{ "css/caomei.css" | relURL }}?v=1.5.7" type="text/css" rel="stylesheet">
+    {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end -}}
+    {{ hugo.Generator }}
+</head>
+<body>
+<script>
+    (function(){var c=localStorage.adams_color_style,f=localStorage.adams_font_style;if(c)document.body.classList.add(c);if(f)document.body.classList.add(f);})();
+</script>
+<header class="header">
+    <section class="container">
+        <hgroup itemscope itemtype="https://schema.org/WPHeader">
+            <h1 class="fullname">{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}</h1>
+        </hgroup>
+        <nav class="social">
+            <ul>
+                {{ range .Site.Menus.social }}
+                <li><a href="{{ .URL }}" target="_blank">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+        <nav class="menu">
+            <ul>
+                {{ range .Site.Menus.main }}
+                <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+                {{ end }}
+            </ul>
+        </nav>
+    </section>
+
+    <section class="infos">
+        <div class="container">
+            {{ if eq .Kind "page" }}
+                <h2 class="fixed-title"></h2>
+                <div class="fields">
+                    <span><i class="czs-time-l"></i> <time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" title="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished" pubdate>{{ .Date.Format "2006-01-02" }}</time></span> /
+                    <span><i class="czs-user-l"></i> {{ .Params.author | default "小石子" }}</span>
+                </div>
+            {{ else }}
+                <h2 class="fixed-title"></h2>
+                <div class="fixed-menus"></div>
+                <div class="placard">
+                    {{ .Site.Params.placard | default .Site.Params.subtitle }}
+                </div>
+            {{ end }}
+        </div>
+    </section>
+</header>

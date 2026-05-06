@@ -1,0 +1,20 @@
+{{ partial "header.html" . }}
+
+<section class="container">
+    <article class="post_article" itemscope itemtype="https://schema.org/Article">
+        {{ .Content }}
+    </article>
+    {{ with .Params.tags }}
+    <ul class="tags">
+        {{ range . }}
+        <li><a href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a></li>
+        {{ end }}
+    </ul>
+    {{ end }}
+    <nav class="nearbypost">
+        <div class="alignleft">{{ with .PrevInSection }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+        <div class="alignright">{{ with .NextInSection }}<a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }}</div>
+    </nav>
+</section>
+
+{{ partial "footer.html" . }}

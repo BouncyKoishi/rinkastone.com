@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+
+<section class="posts main-load">
+    <div class="container">
+        <div class="post-list">
+            <h2 style="margin-bottom:2rem;">{{ .Title }}</h2>
+            <ul style="list-style:none;padding:0;">
+                {{ range .Pages }}
+                <li style="margin-bottom:1rem;">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                    <span style="color:#AAB2BD;font-size:90%;margin-left:1rem;">{{ .Date.Format "2006-01-02" }}</span>
+                </li>
+                {{ end }}
+            </ul>
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}

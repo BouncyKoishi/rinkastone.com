@@ -1,0 +1,48 @@
+{{ partial "header.html" . }}
+
+<section class="posts main-load">
+    <div class="container">
+        <div class="post-list">
+            {{ $paginator := .Paginate (where .Site.RegularPages "Type" "posts") }}
+            {{ range $paginator.Pages }}
+            <article class="meta" itemscope="" itemtype="http://schema.org/BlogPosting">
+                <header>
+                    <a href="{{ .RelPermalink }}" itemprop="url"><h2 itemprop="name headline">{{ .Title }}</h2></a>
+                </header>
+                <main>
+                    <p itemprop="articleBody">
+                        {{ .Summary | plainify | truncate 220 "..." }}
+                    </p>
+                </main>
+                <footer>
+                    <span class="author">作者：<a href="{{ "/authors/" | relURL }}{{ .Params.author | default "小石子" }}">{{ .Params.author | default "小石子" }}</a></span>
+                    <span class="hr"></span>
+                    <span class="time"><time datetime="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" title="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" itemprop="datePublished" pubdate>{{ .Date.Format "2006-01-02" }}</time>发布</span>
+                </footer>
+            </article>
+            {{ else }}
+            <article class="meta">
+                <h3 style="font-size: 3em;margin: 0 0 20px;">Sorry!</h3>
+                <p>这个页面没有你要找的内容。</p>
+            </article>
+            {{ end }}
+            <nav class="reade_more">
+                {{ if $paginator.HasPrev }}
+                <a href="{{ $paginator.Prev.URL }}">上一页</a>
+                {{ end }}
+                {{ range $paginator.Pagers }}
+                {{ if eq . $paginator }}
+                <span class="page-numbers current">{{ .PageNumber }}</span>
+                {{ else }}
+                <a href="{{ .URL }}" class="page-numbers">{{ .PageNumber }}</a>
+                {{ end }}
+                {{ end }}
+                {{ if $paginator.HasNext }}
+                <a href="{{ $paginator.Next.URL }}">下一页</a>
+                {{ end }}
+            </nav>
+        </div>
+    </div>
+</section>
+
+{{ partial "footer.html" . }}
