@@ -9,7 +9,7 @@
     <link href="{{ "css/style.css" | relURL }}?v=1.5.7" type="text/css" rel="stylesheet">
     <link href="{{ "css/caomei.css" | relURL }}?v=1.5.7" type="text/css" rel="stylesheet">
     {{ range .AlternativeOutputFormats -}}
-    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .RelPermalink | safeURL }}">
     {{ end -}}
     {{ hugo.Generator }}
 </head>

@@ -9,7 +9,7 @@
         </nav>
         <div style="display: flex;justify-content: space-between;">
             <div class='left'>
-                <span>&copy; {{ now.Year }} <a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></span>
+                <span>&copy; {{ now.Year }} <a href="{{ relURL "" }}">{{ .Site.Title }}</a></span>
             </div>
             <div class='right'>
                 <span>Theme by <a href="https://biji.io" target="_blank">Adams</a></span>
@@ -20,12 +20,12 @@
 <div class="setting_tool iconfont">
     <a class="back2top" style="display:none;"><i class="czs-arrow-up-l"></i></a>
     {{ if not .IsHome }}
-        <a class="home" href="{{ .Site.BaseURL }}"><i class="czs-home-l"></i></a>
+        <a class="home" href="{{ relURL "" }}"><i class="czs-home-l"></i></a>
     {{ end }}
     <a class="sosearch"><i class="czs-search-l"></i></a>
     <a class="socolor"><i class="czs-clothes-l"></i></a>
     <div class="s">
-        <form method="get" action="{{ .Site.BaseURL }}" class="search">
+        <form method="get" action="{{ relURL "" }}" class="search">
             <input class="search-key" name="s" autocomplete="off" placeholder="输入关键词..." type="text" value="" required="required">
         </form>
     </div>
