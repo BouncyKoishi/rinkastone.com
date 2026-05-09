@@ -3,6 +3,7 @@ locale = 'zh-CN'
 title = '石塔'
 theme = 'adams'
 paginate = 10
+hasCJKLanguage = true
 
 [params]
   subtitle = '逝者如斯夫，不舍昼夜。'

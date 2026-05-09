@@ -1,5 +1,6 @@
 public/
 resources/
+.trae/
 .hugo_build.lock
 *.pyc
 .DS_Store
